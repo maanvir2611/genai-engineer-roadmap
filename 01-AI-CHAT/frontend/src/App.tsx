@@ -3,11 +3,11 @@ import useSubmitTestCase from './hooks/useSubmitTestCase'
 import './App.css'
 
 function App() {
-  const [requirement, setRequirement] = useState('')
+  const [question, setQuestion] = useState('')
   const { loading, response, handleSubmit } = useSubmitTestCase()
 
   const handleFormSubmit = (e: any) => {
-    handleSubmit(requirement, e)
+    handleSubmit(question, e)
   }
 
   return (
@@ -16,9 +16,9 @@ function App() {
       <p>AI Chat Application</p>
       <form onSubmit={handleFormSubmit}>
         <textarea
-          value={requirement}
-          onChange={(e) => setRequirement(e.target.value)}
-          placeholder="Enter your requirement"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Enter your question"
           rows={4}
           style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
         />
@@ -29,7 +29,7 @@ function App() {
       {response && (
         <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '5px' }}>
           <h3>Response:</h3>
-          <pre>{JSON.stringify(response, null, 2)}</pre>
+          <p style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>{response.answer}</p>
         </div>
       )}
     </>

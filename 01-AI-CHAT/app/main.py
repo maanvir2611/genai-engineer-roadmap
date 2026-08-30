@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.test_case import router as test_case_router
+from routes.chat import router as chat_router
 
 app = FastAPI(
     title="AI Chat API",
@@ -20,6 +21,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(test_case_router)
+app.include_router(chat_router)
 
 @app.get("/")
 def read_root():
